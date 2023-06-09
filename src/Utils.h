@@ -14,7 +14,7 @@ typedef enum {SAFE = 0, LOSS = 1, LEAK = 2, THEFT = 3} KeyState;
 typedef enum {OWNER = 0, ADVERSARY = 1} Role;
 
 /**
- * @brief Represents the system parameters used in the scenario.
+ * @brief Represents the system parameters shared by the different classes in Utils.
  */
 struct SystemParameters
 {
@@ -54,7 +54,7 @@ struct SystemParameters
     bool bernoulliDistribution(float probability);
 };
 
-extern SystemParameters* context; /**< Pointer to the current system parameters. */
+extern SystemParameters* context; /**< Pointer to the shared system parameters object. */
 
 /**
  * @brief Represents a scenario in the system.
@@ -100,7 +100,7 @@ public:
  */
 class Wallet
 {
-    vector<vector<bool>> dnf; /**< The disjunctive normal form (DNF) representing the wallet. */
+    vector<vector<bool>> dnf; /**< The disjunctive normal form (DNF) representing the wallet predicate. */
 
     /**
      * @brief Checks if the given availability vector (of either the owner or the adversary) satisfies the wallet.
